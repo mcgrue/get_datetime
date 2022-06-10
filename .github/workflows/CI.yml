@@ -8,10 +8,6 @@ name: CI
 
 on: [push]
 
-env:
-  INPUT_TZ1: Etc
-  INPUT_TZ2: Greenwitch
-
 jobs:
   test-default:
     strategy:
