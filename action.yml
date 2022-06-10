@@ -24,7 +24,7 @@ inputs:
   dateformat_override:
     description: 'time zone of the datetime'
     required: false
-    default: ''
+    default: '%Y-%m-%d_%H.%M.%S_%Z%z'
 
 outputs:
   datetime_str: #
