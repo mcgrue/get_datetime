@@ -9,8 +9,8 @@ name: CI
 on: [push]
 
 env:
-  INPUT_TZ1: America
-  INPUT_TZ2: Los_Angeles
+  INPUT_TZ1: Etc
+  INPUT_TZ2: Greenwitch
 
 jobs:
   build:
@@ -29,10 +29,23 @@ jobs:
         uses: mcgrue/get_datetime@master
         with:
           tz1: 'America'
-          tz2: 'New_York'
+          tz2: 'Los_Angeles'
 
       - name: Print the datetime
         run: |
           echo ${{ steps.get_datetime.outputs.datetime_str }}
-          echo "lol"
+        shell: bash
+
+    steps:
+      - name: Override the dateformat
+        id: get_datetime
+        uses: mcgrue/get_datetime@master
+        with:
+          tz1: 'America'
+          tz2: 'New_York'
+          dateformat_override: '"%Y-%m-%d_LOL_OVERRIDDEN"'
+
+      - name: Print the datetime
+        run: |
+          echo ${{ steps.get_datetime.outputs.datetime_str }}
         shell: bash
