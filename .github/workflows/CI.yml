@@ -9,8 +9,8 @@ name: CI
 on: [push]
 
 env:
-  INPUT_TZ1: Los_Angeles
-  INPUT_TZ2: New_York
+  INPUT_TZ1: America
+  INPUT_TZ2: Los_Angeles
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
         id: get_datetime
         uses: mcgrue/get_datetime@master
         with:
-          tz1: 'Los_Angeles'
+          tz1: 'America'
           tz2: 'New_York'
 
       - name: Print the datetime
