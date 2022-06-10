@@ -9,8 +9,8 @@ name: CI
 on: [push]
 
 env:
-  INPUT_TZ1: Asia
-  INPUT_TZ2: Shanghai
+  INPUT_TZ1: America/Los_Angeles
+  INPUT_TZ2: New_York
 
 jobs:
   build:
