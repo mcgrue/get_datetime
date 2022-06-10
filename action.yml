@@ -2,13 +2,17 @@ name: 'Get the datetime string'
 description: 'use it to get the datetime.'
 inputs:
   tz1:
-    description: 'time zone of the datetime'
-    required: true
-    default: 'Asia'
+    description: 'Pre-slash Locale of the datetime (e.g., 'America' of 'America/New_York', see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for full list)'
+    required: false
+    default: 'Etc'
   tz2:
+    description: 'Post-slash Locale of the datetime (e.g., 'New_York' of 'America/New_York', see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for full list)'
+    required: false
+    default: 'Greenwitch'
+  dateformat_override:
     description: 'time zone of the datetime'
-    required: true
-    default: 'Shanghai'
+    required: false
+    default: 'Greenwitch'
 outputs:
   datetime_str: #
     description: 'date and time'
@@ -18,5 +22,3 @@ runs:
 branding:
   icon: 'terminal'
   color: 'green'
-
-

@@ -1,7 +1,7 @@
 #===================================================================================
 # Lisence: MIT
-# Author: ccccmagicboy
-# Url: https://ccrobot-online.com.cn
+# Author: mcgrue
+# Url: https://gruniverse.com
 #===================================================================================
 
 name: CI
@@ -27,11 +27,31 @@ jobs:
       - name: Get the datetime
         id: get_datetime
         uses: mcgrue/get_datetime@master
+
+      - name: Print the datetime - default timezone (GMT)
+        run: |
+          echo ${{ steps.get_datetime.outputs.datetime_str }}
+        shell: bash
+
+  test-timezone-provided:
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Get the datetime
+        id: get_datetime
+        uses: mcgrue/get_datetime@master
         with:
           tz1: 'America'
           tz2: 'Los_Angeles'
 
-      - name: Print the datetime
+      - name: Print the datetime - Supplied Timezone
         run: |
           echo ${{ steps.get_datetime.outputs.datetime_str }}
         shell: bash
@@ -47,7 +67,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Override the dateformat
+      - name: Print the datetime - Supplied Timezone and Dateformat
         id: get_datetime
         uses: mcgrue/get_datetime@master
         with:

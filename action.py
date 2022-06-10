@@ -2,9 +2,12 @@ import os
 from datetime import datetime
 from pytz import timezone
 
-print('time zone is {0:s}/{1:s}'.format(os.environ['INPUT_TZ1'], os.environ['INPUT_TZ2']))
+tz1 = os.environ.get('INPUT_TZ1', 'Etc')
+tz2 = os.environ.get('INPUT_TZ2', 'Greenwitch')
 
-external_fmt = os.environ['INPUT_DATEFORMAT_OVERRIDE']
+print('time zone is {0:s}/{1:s}'.format(tz1, tz2))
+
+external_fmt = os.environ.get('INPUT_DATEFORMAT_OVERRIDE', False)
 fmt = "%Y-%m-%d_%H.%M.%S_%Z%z"
 
 if external_fmt:
@@ -13,7 +16,7 @@ if external_fmt:
 else:
     print('Using default format: {0:s}'.format(fmt))
 
-now_utc = datetime.now(timezone('{0:s}/{1:s}'.format(os.environ['INPUT_TZ1'], os.environ['INPUT_TZ2'])))
+now_utc = datetime.now(timezone('{0:s}/{1:s}'.format(tz1, tz2)))
 str_temp = now_utc.strftime(fmt)
 
 if None != str_temp:
