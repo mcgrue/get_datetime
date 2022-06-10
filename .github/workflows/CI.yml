@@ -13,7 +13,7 @@ env:
   INPUT_TZ2: Greenwitch
 
 jobs:
-  build:
+  test-default:
     strategy:
       matrix:
         os:
@@ -35,6 +35,16 @@ jobs:
         run: |
           echo ${{ steps.get_datetime.outputs.datetime_str }}
         shell: bash
+
+  test-format-override:
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Override the dateformat
