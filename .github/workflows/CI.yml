@@ -9,7 +9,7 @@ name: CI
 on: [push]
 
 env:
-  INPUT_TZ1: America/Los_Angeles
+  INPUT_TZ1: Los_Angeles
   INPUT_TZ2: New_York
 
 jobs:
@@ -17,8 +17,8 @@ jobs:
     strategy:
       matrix:
         os:
-          - windows-2016
-          - ubuntu-16.04
+          - windows-latest
+          - ubuntu-latest
           - macos-latest
 
     runs-on: ${{ matrix.os }}
@@ -28,7 +28,7 @@ jobs:
         id: get_datetime
         uses: mcgrue/get_datetime@master
         with:
-          tz1: 'America/Los_Angeles'
+          tz1: 'Los_Angeles'
           tz2: 'New_York'
 
       - name: Print the datetime
