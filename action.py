@@ -3,12 +3,12 @@ from datetime import datetime
 from pytz import timezone
 
 tz1 = os.environ.get('INPUT_TZ1', 'Etc')
-tz2 = os.environ.get('INPUT_TZ2', 'Greenwitch')
+tz2 = os.environ.get('INPUT_TZ2', 'Greenwich')
+external_fmt = os.environ.get('INPUT_DATEFORMAT_OVERRIDE', '')
+
+fmt = '%Y-%m-%d_%H.%M.%S_%Z%z'
 
 print('time zone is {0:s}/{1:s}'.format(tz1, tz2))
-
-external_fmt = os.environ.get('INPUT_DATEFORMAT_OVERRIDE', False)
-fmt = "%Y-%m-%d_%H.%M.%S_%Z%z"
 
 if external_fmt:
     print('External format provided via environment variable INPUT_DATEFORMAT_OVERRIDE: {0:s} '.format(external_fmt))
@@ -23,5 +23,6 @@ if None != str_temp:
     command = 'echo ::set-output name=datetime_str::{0:s}'.format(str_temp)
     print(command)
     print(os.popen(command).read())
-
+else:
+    print('get_datetime seems to have failed. Likely you gave it some bad data. Garbage In, Garbage Out?')
 

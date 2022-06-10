@@ -24,7 +24,7 @@ inputs:
   dateformat_override:
     description: 'time zone of the datetime'
     required: false
-    default: 'Greenwich'
+    default: ''
 
 outputs:
   datetime_str: #
