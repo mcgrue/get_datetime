@@ -1,5 +1,8 @@
-name: 'Get the datetime string'
-description: 'use it to get the datetime.'
+name: 'Get the datetime string of NOW()'
+description:
+  'use it to get the datetime for when this script ran.  Useful for
+  cross-platform timestampted artifacts, amoung other things.'
+
 inputs:
   tz1:
     description:
@@ -8,6 +11,7 @@ inputs:
       list)"
     required: false
     default: 'Etc'
+
   tz2:
     description:
       "Post-slash Locale of the datetime (e.g., 'New_York' of
@@ -15,17 +19,21 @@ inputs:
       https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for full
       list)"
     required: false
-    default: 'Greenwitch'
+    default: 'Greenwich'
+
   dateformat_override:
     description: 'time zone of the datetime'
     required: false
-    default: 'Greenwitch'
+    default: 'Greenwich'
+
 outputs:
   datetime_str: #
-    description: 'date and time'
+    description: 'The formatted datetime string for when this script executed.'
+
 runs:
   using: 'node12'
   main: 'action.js'
+
 branding:
   icon: 'terminal'
   color: 'green'
