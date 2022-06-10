@@ -17,23 +17,21 @@ jobs:
     strategy:
       matrix:
         os:
-        - windows-2016
-        - ubuntu-16.04
-        - macos-latest
-  
+          - windows-2016
+          - ubuntu-16.04
+          - macos-latest
+
     runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Get the datetime
-      id: get_datetime
-      uses: ccccmagicboy/get_datetime@master
-      with:
-        tz1: 'Asia'
-        tz2: 'Shanghai'
+      - name: Get the datetime
+        id: get_datetime
+        uses: mcgrue/get_datetime@master
+        with:
+          tz1: 'America/Los_Angeles'
+          tz2: 'New_York'
 
-    - name: Print the datetime
-      run: |
-        echo ${{ steps.get_datetime.outputs.datetime_str }}
-      shell: bash
-        
-
+      - name: Print the datetime
+        run: |
+          echo ${{ steps.get_datetime.outputs.datetime_str }}
+        shell: bash
