@@ -34,4 +34,5 @@ jobs:
       - name: Print the datetime
         run: |
           echo ${{ steps.get_datetime.outputs.datetime_str }}
+          echo "lol"
         shell: bash
